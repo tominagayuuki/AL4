@@ -107,8 +107,9 @@ Object3d* Object3d::Create()
 	// スケーリングをセット
 	float scale_val = 20;
 	object3d->scale = { scale_val,scale_val,scale_val };
-
+	
 	return object3d;
+
 }
 
 void Object3d::SetEye(XMFLOAT3 eye)
@@ -336,7 +337,7 @@ void Object3d::LoadTexture()
 	ScratchImage scratchImg{};
 
 	// WICテクスチャのロード
-	result = LoadFromWICFile(L"Resources/texture.png", WIC_FLAGS_NONE, &metadata, scratchImg);
+	result = LoadFromWICFile(L"Resources/block/block.png", WIC_FLAGS_NONE, &metadata, scratchImg);
 	assert(SUCCEEDED(result));
 
 	ScratchImage mipChain{};
@@ -405,7 +406,7 @@ void Object3d::CreateModel()
 	// ファイルストリーム
 	std::ifstream file;
 	// .objファイルを開く
-	file.open("Resources/triangle_tex/triangle_tex.obj");
+	file.open("Resources/block/block.obj");
 	// ファイルオープン失敗をチェック
 	if (file.fail()) {
 		assert(0);
@@ -593,6 +594,7 @@ void Object3d::Update()
 {
 	HRESULT result;
 	XMMATRIX matScale, matRot, matTrans;
+	scale = { 1,1,1};
 
 	// スケール、回転、平行移動行列の計算
 	matScale = XMMatrixScaling(scale.x, scale.y, scale.z);
