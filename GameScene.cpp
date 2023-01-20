@@ -11,7 +11,6 @@ GameScene::~GameScene()
 {
 	delete spriteBG;
 	delete object3d;
-	
 }
 
 void GameScene::Initialize(DirectXCommon* dxCommon, Input* input)
